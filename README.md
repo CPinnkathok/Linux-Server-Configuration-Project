@@ -32,8 +32,12 @@ You can visit http://54.71.206.55.xip.io/restaurants
 * In the terminal after connecting with ubuntu run the following commands:
 ```
 sudo apt-get update
+sudo apt-get full-upgrade
 sudo apt-get upgrade
 ```
+* Also allowed daily updates by following this guide: https://libre-software.net/ubuntu-automatic-updates/
+	- Updated /etc/apt/apt.conf.d/50unattended-upgrades
+	- Updated /etc/apt/apt.conf.d/20auto-upgrades
 
 **5.** Change the SSH port to 2200 which is not the default 22
 * Update the sshd_config file
