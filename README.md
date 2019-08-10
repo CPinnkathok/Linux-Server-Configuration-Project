@@ -2,7 +2,7 @@
 
 The Linux Server Configuration project was the last project for the Udacity Full Stack Nanodegree program. The goal of this project was to create a web application that would use Item-Catalog application developed earlier in the course. The directions below will outline how to create a Lnux server and deploy the Item-Catalog application. 
 
-You can visit http://54.71.206.55.xip.io/restaurants
+You can visit http://52.39.168.14.xip.io/restaurants
 
 ## Step by Step Walkthrough
 ### Setup your server in Amazon Lightsail
@@ -24,7 +24,7 @@ You can visit http://54.71.206.55.xip.io/restaurants
 
 **3.** Connect to Server
 * Type in the following command into the prompt: 
-``` ssh -i ~/.ssh/Default.pem ubuntu@54.71.206.55 ```
+``` ssh -i ~/.ssh/Default.pem ubuntu@52.39.168.14 ```
 
 ### Secure the server
 
@@ -68,7 +68,7 @@ sudo ufw enable
 	- Navigate to your server on [Amazon Lightsail](https://lightsail.aws.amazon.com/).
 	- Allow ports 2200 (TCP), 80 (TCP) and 123 (UDP)
 	- Remove port 22 (TCP)
-* Exit out of the ubuntu terminal and reconnect by typing in ``` ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@54.71.206.55 ```
+* Exit out of the ubuntu terminal and reconnect by typing in ``` ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@52.39.168.14 ```
 
 ### Create grader user and give appropriate access
 
@@ -114,7 +114,7 @@ sudo visudo
  ```
  * Exit out of the ubuntu terminal and reconnect into the grader terminal by typing in: 
  ```
- ssh -i ~/.ssh/grader_key.rsa -p 2200 grader@54.71.206.55
+ ssh -i ~/.ssh/grader_key.rsa -p 2200 grader@52.39.168.14
  ```
  ### Prepare to deploy project to the web server
 
@@ -129,7 +129,7 @@ sudo visudo
  ```
  sudo apt-get install apache2
  ```
- * Verify that apache was installed correctly by typing in 54.71.206.55 in a web browser
+ * Verify that apache was installed correctly by typing in 52.39.168.14 in a web browser
 
 **13.** Install the python2 WSGI package that will allow python to communicate to the web server
  * Run the commands
@@ -145,8 +145,8 @@ sudo visudo
  sudo nano /etc/apache2/sites-enabled/000-default.conf
  ```
  * Add the following lines above the ServerAdmin line
-	- ServerName 54.71.206.55
-	- ServerAlias ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- ServerName 52.39.168.14
+	- ServerAlias ec2-52-39-168-14.us-west-2.compute.amazonaws.com
  * Add the following line before the closing </VirtualHost> tag
 	- WSGIScriptAlias / /var/www/html/myapp.wsgi
  * CTRL+X and Y to save and exit
@@ -267,16 +267,16 @@ alter table menu_item add column id serial primary key;
 **24.** Update Client Secret
 * In [Google Console Developers Page](https://console.developers.google.com/apis/credentials) Update the API Credentials for the client_secret key
 * Go to OAuth Consent Screen and add the following the Authorized domains:
-	- ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- ec2-52-39-168-14.us-west-2.compute.amazonaws.com
 	- xip.io
 	- Save
 * Go to the credentials tab and select the correct client id
 * Add the following to the Authorized JavaScript Origins:
-	- http://54.71.206.55.xip.io
-	- http://ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- http://52.39.168.14.xip.io
+	- http://ec2-52-39-168-14.us-west-2.compute.amazonaws.com
 * Add the following the Authorized redirect URIs
-	- http://54.71.206.55.xip.io/login
-	- http://54.71.206.55.xip.io/gconnect
+	- http://52.39.168.14.xip.io/login
+	- http://52.39.168.14.xip.io/gconnect
 * Save and download the key
 * Copy the contents of the key and connect to the grader ssh terminal
 * ``` sudo nano /var/www/html/client_secret.json ```
@@ -285,7 +285,7 @@ alter table menu_item add column id serial primary key;
 
 ### Run the application
 * In the grader terminal: ``` sudo service apache2 restart ```
-* In the web browser go to http://54.71.206.55.xip.io/restaurants
+* In the web browser go to http://52.39.168.14.xip.io/restaurants
 * You will see the list of restaurant items created by the lotsofmenus.py script, you can now login with the authorized google user to edit the exiting restaurants or add new ones
 
 ### Authors
